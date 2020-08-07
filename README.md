@@ -30,7 +30,7 @@ To get a copy of the project up and running on your local machine for developmen
 
 1.  To get a development env running, use the **.env.example** file to create your own **.env** file.
 2.  Create a **postgres** db and add the credentials to .env file
-3.  Run 
+3.  Apply all migrations
 ```sh 
 (virtual) $ python manage.py migrate 
 ```
