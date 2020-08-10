@@ -7,11 +7,11 @@ A clone of the website for the popular photo app [Instagram](https://www.instagr
 To get a copy of the project up and running on your local machine for development and testing purposes, 
 1. **clone** this repository 
    ``` 
-   git clone []
+   git clone https://github.com/KarenNgala/photoApp
    ```
 2. Create a **virtual environment** 
    ```
-   python3.6 -m venv --without-pip virtual
+   python3.6 -m venv virtual
 
    source virtual/bin/activate
    ```
@@ -75,4 +75,4 @@ With all environment variables changed to suit your local copy of this repositor
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md] file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/KarenNgala/photoApp/blob/master/LICENSE) file for details
