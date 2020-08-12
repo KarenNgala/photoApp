@@ -1,0 +1,70 @@
+:root {
+    --white: #fafafa;
+    --grey: #717171;
+    --medium-grey: #dbdbdb;
+    --strong-grey: #545454;
+    --header-color: #fff;
+    --text-color: #262626;
+    --blue-button-color: #0095f6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--white);
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--header-color);
+    border-bottom: 1px solid var(--medium-grey);
+}
+
+#logo {
+    height: 90%;
+    width: 130px;
+    padding: 5px;
+}
+
+input {
+    width: 130px;
+    height: 80%;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid var(--medium-grey);
+    background-color: var(--white);
+}
+
+nav {
+    display: inline-flex;
+}
+
+nav i {
+    margin: 5px 10px;
+    font-size: 20px;
+    color: var(--strong-grey);
+}
+
+#user {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+#user img,
+#profile-pic img {
+    height: 100%;
+    width: 100%;
+    margin: 2px 10px;
+    border-radius: 50%;
+}
