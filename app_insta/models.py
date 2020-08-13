@@ -100,7 +100,7 @@ class Comment(models.Model):
         self.save()
 
     def __str__(self):
-        return 'Comment by {self.name}'
+        return f'Comment by {self.name}'
 
 
 

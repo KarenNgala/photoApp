@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 urlpatterns=[
     url(r'^$', views.feed, name='feed'),
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'new/image$', views.new_image, name='new_image')
+    url(r'new/image$', views.new_image, name='new_image'),
+    url(r'comments/(\d+)/$', views.comments, name='comments'),
 ]
 
 if settings.DEBUG:

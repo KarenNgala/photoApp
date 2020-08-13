@@ -1,0 +1,68 @@
+ {% load bootstrap4 %} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Comments</title>
+    {{form.media}} {% block styles %}
+    <style>
+        .dialogbox .body {
+            position: relative;
+            max-width: 300px;
+            height: auto;
+            margin: 20px 10px;
+            padding: 5px;
+            background-color: #DADADA;
+            border-radius: 3px;
+            border: 5px solid #ccc;
+        }
+        
+        .body .message {
+            min-height: 30px;
+            border-radius: 3px;
+            font-family: Arial;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #797979;
+        }
+    </style>
+    {% bootstrap_css %} {% endblock %}
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{%url 'new_image'%}" method="post" enctype="multipart/form-data" class="pt-5">
+                    {%csrf_token%} {% bootstrap_form form%}
+                    <input type="submit" class="btn btn-success btn-lg" value="Post">
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="text-center pt-5 ml-3"><u>Comments</u></h4>
+                {% for item in maoni %}
+                <div class="dialogbox">
+                    <div class="body">
+                        <div class="message">
+                            <span>{{item.comment_body}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %} {% endblock %}
+
+</body>
+
+</html>

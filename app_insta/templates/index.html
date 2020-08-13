@@ -19,22 +19,19 @@
 
                 <div class="Instagram-card-content">
                     <a class="instagram-card-icon" href="#"><i class="far fa-heart"></i></a>
-                    <a class="instagram-card-icon" href="#"><i class="far fa-comment"></i></a>
+                    <a class="instagram-card-icon" href="/comments/{{item.id}}"><i class="far fa-comment"></i></a>
                     <a class="instagram-card-icon left" href="#"><i class="far fa-bookmark"></i></a>
                     <p class="Likes">12 Likes</p>
                     <p>
                         <a class="Instagram-card-content-user" href="#">{{item.profile.user}}</a> {{item.caption}}.
                     </p>
-                    <p class="comments">View all 12 comments</p>
-                    <p><a class="user-comments" href="#">{{item.comments.name}}</a> {{item.comments.comment_body}}</p>
-                    <p class="date">7 MINUTES AGO</p>
+                    <a href="/comments/{{item.id}}" class="comments">
+                        {% if number %}
+                        View all {{number}} comments
+                        {% endif %}
+                    </a>
+                    <p class="date">{{item.created_on|timesince}} AGO </p>
                     <hr>
-                </div>
-
-                <div class="Instagram-card-footer">
-                    <a class="footer-action-icons" href="#"><i class="fa fa-heart-o"></i></a>
-                    <input class="comments-input" type="text" placeholder="Add a comment...">
-                    <!-- <a class="instagram-card-icon" href="#"><small>Post</small></a> -->
                 </div>
 
             </div>

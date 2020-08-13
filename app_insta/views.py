@@ -2,14 +2,15 @@ from django.shortcuts import render, redirect
 from .models import Image, Profile, Comment, Relation
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import uploadForm
+from .forms import uploadForm, commentForm
 
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def feed(request):
     pictures = Image.objects.all()
-    return render(request, 'index.html',{'pictures':pictures})
+    number = Comment.objects.count()
+    return render(request, 'index.html',{'pictures':pictures, 'number':number})
 
 
 @login_required(login_url='/accounts/login/')
@@ -26,7 +27,26 @@ def new_image(request):
             image = form.save(commit=False)
             image.profile = current_user
             image.save()
-        return redirect('profile')
+        return redirect('feed')
     else:
         form = uploadForm()
     return render(request, 'new_image.html', {'form':form})
+
+@login_required(login_url='accounts/login')
+def comments(request, id):
+    current_user = request.user.profile
+    post = Image.objects.filter(id=id)
+
+    if request.method == 'POST':
+        form = commentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.name = current_user
+            comment.related_post = post
+            comment.save()
+        return redirect('comments')
+    else:
+        form = commentForm()
+
+    maoni = Comment.objects.filter(related_post=id).all()
+    return render(request, 'comments.html', {'maoni':maoni, 'form':form})
