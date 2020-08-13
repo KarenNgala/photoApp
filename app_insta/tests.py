@@ -31,10 +31,7 @@ class TestImage(TestCase):
         self.test_profile = self.test_user.profile
         self.test_profile.save()
 
-        self.test_comment = Comment(name=self.test_profile, comment_body='Test comment', created_on=datetime.now())
-        self.test_comment.save()
-
-        self.test_image = Image(image='images/test.jpg', caption='some text', profile=self.test_profile, comments=self.test_comment, created_on=datetime.now())
+        self.test_image = Image(image='images/test.jpg', caption='some text', profile=self.test_profile, created_on=datetime.now())
 
     def test_instance(self):
         ''' test method to ensure image instance creation '''
@@ -47,6 +44,5 @@ class TestImage(TestCase):
 
     def tearDown(self):
         ''' method to clear all setup instances after each test run '''
-        self.test_user.delete()
-        Comment.objects.all().delete()
+        self.test_user.delete() #deletes it's profile too
         Image.objects.all().delete()

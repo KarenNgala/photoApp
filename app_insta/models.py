@@ -11,7 +11,6 @@ class Image(models.Model):
     caption = models.TextField()
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, blank=True)
-    comments = models.ForeignKey('Comment', on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -79,7 +78,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Comment(models.Model):
     ''' a model for comments'''
-    # related_post = models.ForeignKey('Images', on_delete=models.CASCADE)
+    related_post = models.ForeignKey('Image', on_delete=models.CASCADE)
     name = models.ForeignKey('Profile', on_delete=models.CASCADE)
     comment_body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

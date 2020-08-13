@@ -6,6 +6,7 @@
         <i class='far fa-paper-plane'></i>
         <i class='far fa-compass'></i>
         <i class='far fa-heart'></i>
+        <a href="{% url 'logout'%}?next={{request.path}}"><i class='fa fa-sign-out-alt'></i></a>
         <div id="user">
             <a href="{% url 'profile' %}">
                 <img src="{{user.profile.photo.url}}">
