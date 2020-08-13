@@ -42,10 +42,10 @@ class Profile(models.Model):
     ''' extended User model '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photo = models.ImageField(default='default.jpg', upload_to='avatars/')
-    bio = models.TextField(max_length=500, blank=True, default=f'Hi, my name is {User.username}')
+    bio = models.TextField(max_length=500, blank=True, default=f'Hello, I am new here!')
 
     def __str__(self):
-        return f'user {self.user.username}'
+        return f'{self.user.username}'
 
     def save_profile(self):
         ''' method to save a user's profile '''
@@ -55,9 +55,8 @@ class Profile(models.Model):
         '''method to delete a user's profile '''
         self.delete()
 
-    def update_bio(self, user_id, new_bio):
+    def update_bio(self, new_bio):
         ''' method to update a users profile bio '''
-        user = User.objects.get(id=user_id)
         self.bio = new_bio
         self.save()
 

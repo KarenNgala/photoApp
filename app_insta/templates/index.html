@@ -4,16 +4,17 @@
 {% block content %} {{block.super}}
 <main>
     <section>
+        {% for item in pictures %}
         <article id="post">
             <div class="Instagram-card">
                 <div class="Instagram-card-header">
-                    <img src="https://c.tadst.com/gfx/750w/sunrise-sunset-sun-calculator.jpg" class="Instagram-card-user-image">
-                    <a class="Instagram-card-user-name" href="#"> kaytheninja </a>
+                    <img src="{{item.profile.photo.url}}" class="Instagram-card-user-image ">
+                    <a class="Instagram-card-user-name" href="#"> {{item.profile.user}} </a>
                     <a class="instagram-card-icon left" href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                 </div>
 
                 <div class="Instagram-card-image">
-                    <img src="https://c.tadst.com/gfx/750w/sunrise-sunset-sun-calculator.jpg" height='300' width="595">
+                    <img src="{{item.image.url}}" width="595">
                 </div>
 
                 <div class="Instagram-card-content">
@@ -22,10 +23,10 @@
                     <a class="instagram-card-icon left" href="#"><i class="far fa-bookmark"></i></a>
                     <p class="Likes">12 Likes</p>
                     <p>
-                        <a class="Instagram-card-content-user" href="#">kaytheninja</a> I wonder why I can't run that fast in my sleep.
+                        <a class="Instagram-card-content-user" href="#">{{item.profile.user}}</a> {{item.caption}}.
                     </p>
                     <p class="comments">View all 12 comments</p>
-                    <p><a class="user-comments" href="#">somebody</a> Wow! This is beautiful. Poetry at it's finest. You'll go far</p>
+                    <p><a class="user-comments" href="#">{{item.comments.name}}</a> {{item.comments.comment_body}}</p>
                     <p class="date">7 MINUTES AGO</p>
                     <hr>
                 </div>
@@ -38,6 +39,7 @@
 
             </div>
         </article>
+        {% endfor %}
     </section>
 </main>
 {% endblock %}
