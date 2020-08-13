@@ -19,5 +19,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'', include('app_insta.urls'))
+    url(r'', include('app_insta.urls')),
+    url(r'^accounts/', include('django_registration.backends.one_step.urls')),
+    url('accounts/', include('django.contrib.auth.urls')),
 ]
