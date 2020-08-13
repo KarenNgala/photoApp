@@ -5,13 +5,13 @@ from django.dispatch import receiver
 
 
 # Create your models here.
-class Images(models.Model):
+class Image(models.Model):
     ''' a model for Image posts '''
     image = models.ImageField(upload_to='images/')
     caption = models.TextField()
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, blank=True)
-    comments = models.ForeignKey('Comments', on_delete=models.CASCADE)
+    comments = models.ForeignKey('Comment', on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -33,7 +33,7 @@ class Images(models.Model):
     @classmethod    
     def get_user_images(cls, user_id):
         ''' method to retrieve all images'''
-        img = Images.objects.filter(profile=user_id).all()
+        img = Image.objects.filter(profile=user_id).all()
         sort = sorted(img, key=lambda t: t.created_on)
         return sort
 
@@ -47,7 +47,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'user {self.user.username}'
 
-    def save_image(self):
+    def save_profile(self):
         ''' method to save a user's profile '''
         self.save()
 
@@ -78,7 +78,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     ''' a model for comments'''
     # related_post = models.ForeignKey('Images', on_delete=models.CASCADE)
     name = models.ForeignKey('Profile', on_delete=models.CASCADE)
@@ -106,7 +106,7 @@ class Comments(models.Model):
 
 
 
-class Relations(models.Model):
+class Relation(models.Model):
     ''' model for user relations: follower-following system'''
     follower = models.ForeignKey('Profile', related_name='following', on_delete=models.CASCADE)
     followed = models.ForeignKey('Profile', related_name='followers', on_delete=models.CASCADE)
