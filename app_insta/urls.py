@@ -8,7 +8,7 @@ urlpatterns=[
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^user/(\d+)/$', views.user, name='users'),
     url(r'new/image$', views.new_image, name='new_image'),
-    url(r'comments/(\d+)/$', views.comments, name='comments'),
+    url(r'comments/(\d+)/', views.comments, name='comments'),
     url(r'like/(\d+)/$',views.like_post, name='like' ),
 ]
 

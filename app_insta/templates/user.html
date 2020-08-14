@@ -3,7 +3,7 @@
 <!--  -->
 {% block content %} {{block.super}}
 <div>
-    {% for user in pics %}
+    {% for user in users %}
     <div class="container">
         <div class="profile">
             <div class="profile-image">
@@ -15,7 +15,6 @@
                 <a href="#">
                     <button class="btn profile-edit-btn">Follow</button>
                 </a>
-                <a href="{% url 'new_image' %}" class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-plus" aria-hidden="true"></i></a>
             </div>
 
             <div class="profile-stats">

@@ -38,7 +38,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <form action="{%url 'new_image'%}" method="post" enctype="multipart/form-data" class="pt-5">
+                <form action="{%url 'feed' %}" method="post" enctype="multipart/form-data" class="pt-5">
                     {%csrf_token%} {% bootstrap_form form%}
                     <input type="submit" class="btn btn-success btn-lg" value="Post">
                 </form>

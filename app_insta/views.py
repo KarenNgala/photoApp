@@ -20,8 +20,9 @@ def profile(request):
     return render(request, 'profile.html', {'pics':pics})
 
 def user(request, user_id):
+    users = User.objects.filter(id=user_id)
     pics = Image.objects.filter(profile=user_id).all()    
-    return render(request, 'user.html', {'pics':pics}) 
+    return render(request, 'user.html', {'pics':pics, 'users':users}) 
 
 @login_required(login_url='/accounts/login/')
 def new_image(request):
@@ -40,7 +41,7 @@ def new_image(request):
 @login_required(login_url='accounts/login')
 def comments(request, id):
     current_user = request.user.profile
-    post = get_object_or_404(Image, id=id)
+    post = Image.objects.filter(id=id)
 
     if request.method == 'POST':
         form = commentForm(request.POST)
