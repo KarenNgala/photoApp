@@ -18,10 +18,10 @@
                 </div>
 
                 <div class="Instagram-card-content">
-                    <a class="instagram-card-icon" href="#"><i class="far fa-heart"></i></a>
+                    <a class="instagram-card-icon" href="/like/{{item.id}}"><i class="far fa-heart"></i></a>
                     <a class="instagram-card-icon" href="/comments/{{item.id}}"><i class="far fa-comment"></i></a>
                     <a class="instagram-card-icon left" href="#"><i class="far fa-bookmark"></i></a>
-                    <p class="Likes">12 Likes</p>
+                    <p class="Likes">{{item.likes.count}} Likes</p>
                     <p>
                         <a class="Instagram-card-content-user" href="#">{{item.profile.user}}</a> {{item.caption}}.
                     </p>

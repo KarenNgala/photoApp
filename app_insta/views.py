@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Image, Profile, Comment, Relation
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -35,7 +35,7 @@ def new_image(request):
 @login_required(login_url='accounts/login')
 def comments(request, id):
     current_user = request.user.profile
-    post = Image.objects.filter(id=id)
+    post = get_object_or_404(Image, id=id)
 
     if request.method == 'POST':
         form = commentForm(request.POST)
@@ -50,3 +50,13 @@ def comments(request, id):
 
     maoni = Comment.objects.filter(related_post=id).all()
     return render(request, 'comments.html', {'maoni':maoni, 'form':form})
+
+
+def like_post(request, post_id):
+    current_user = request.user
+    img = Image.objects.get(id=post_id)
+    if img.likes.filter(id=current_user.id).exists():
+        img.likes.remove(current_user)
+    else:
+        img.likes.add(current_user)
+    return redirect('feed')
