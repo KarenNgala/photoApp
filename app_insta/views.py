@@ -15,8 +15,13 @@ def feed(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    return render(request, 'profile.html')
- 
+    current_user = request.user.profile
+    pics = Image.objects.filter(profile=current_user).all()
+    return render(request, 'profile.html', {'pics':pics})
+
+def user(request, user_id):
+    user = User.objects.g
+    return render(request, 'profile.html') 
 
 @login_required(login_url='/accounts/login/')
 def new_image(request):
