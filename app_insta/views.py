@@ -20,8 +20,8 @@ def profile(request):
     return render(request, 'profile.html', {'pics':pics})
 
 def user(request, user_id):
-    user = User.objects.g
-    return render(request, 'profile.html') 
+    pics = Image.objects.filter(profile=user_id).all()    
+    return render(request, 'user.html', {'pics':pics}) 
 
 @login_required(login_url='/accounts/login/')
 def new_image(request):

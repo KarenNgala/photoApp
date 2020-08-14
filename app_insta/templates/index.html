@@ -8,7 +8,7 @@
         <article id="post">
             <div class="Instagram-card">
                 <div class="Instagram-card-header">
-                    <a href="{%url 'profile'%}">
+                    <a href="user/{{item.profile.user.id}}">
                         <img src="{{item.profile.photo.url}}" class="Instagram-card-user-image ">
                     </a>
                     <a class="Instagram-card-user-name" href="#"> {{item.profile.user}} </a>

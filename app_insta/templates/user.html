@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block content %} {{block.super}}
+<div>
+    {% for user in pics %}
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image">
+                <img src="{{user.profile.photo.url}}" alt="" height="250">
+            </div>
+
+            <div class="profile-user-settings">
+                <h1 class="profile-user-name">{{user.profile}}</h1>
+                <a href="#">
+                    <button class="btn profile-edit-btn">Follow</button>
+                </a>
+                <a href="{% url 'new_image' %}" class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-plus" aria-hidden="true"></i></a>
+            </div>
+
+            <div class="profile-stats">
+                <ul>
+                    <li><span class="profile-stat-count">164</span> posts</li>
+                    <li><span class="profile-stat-count">188</span> followers</li>
+                    <li><span class="profile-stat-count">206</span> following</li>
+                </ul>
+            </div>
+
+            <div class="profile-bio">
+                <p> {{user.profile.bio}} </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div>
+    <div class="container">
+        <div class="gallery">
+            {% for item in pics %}
+            <div class="gallery-item" tabindex="0">
+                <img src="{{item.image.url}}" class="gallery-image" alt="">
+                <div class="gallery-item-info">
+                    <ul>
+                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> {{item.likes.count}}</li>
+                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> {{item.comments.count}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
